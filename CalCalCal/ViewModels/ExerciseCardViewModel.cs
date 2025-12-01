@@ -172,11 +172,12 @@ public partial class ExerciseCardViewModel : ObservableObject
         await _databaseService.SaveExerciseCardAsync(SelectedCard);
         await _databaseService.UpdateSessionTotalsAsync(SessionId);
 
-        // Refresh the card in the list
+        // Refresh the card in the list using RemoveAt/Insert to trigger UI update
         var index = ExerciseCards.IndexOf(SelectedCard);
         if (index >= 0)
         {
-            ExerciseCards[index] = SelectedCard;
+            ExerciseCards.RemoveAt(index);
+            ExerciseCards.Insert(index, SelectedCard);
         }
 
         UpdateSessionTotals();

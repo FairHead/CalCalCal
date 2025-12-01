@@ -124,7 +124,7 @@ public class CalorieCalculatorServiceTests
     }
 
     [Fact]
-    public void CalculateCalories_Male_ReturnsSligthlyMoreThanFemale()
+    public void CalculateCalories_Male_ReturnsSlightlyMoreThanFemale()
     {
         // Arrange
         var maleProfile = new UserProfile { Weight = 70, Height = 170, Age = 30, Gender = Gender.Male };

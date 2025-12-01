@@ -5,10 +5,6 @@
              x:Class="CalCalCal.Views.UserProfilePage"
              Title="Profile Settings">
 
-    <ContentPage.BindingContext>
-        <viewmodels:UserProfileViewModel />
-    </ContentPage.BindingContext>
-
     <ScrollView>
         <Grid Padding="20" RowSpacing="15" ColumnSpacing="10">
             <Grid.RowDefinitions>

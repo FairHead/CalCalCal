@@ -120,16 +120,22 @@ public class CalorieCalculatorService
         return Math.Round(calories * ageFactor * genderFactor, 1);
     }
 
+    /// <summary>
+    /// Gets an age-based adjustment factor for calorie calculation.
+    /// Basal Metabolic Rate (BMR) typically decreases by approximately 1-2% per decade after age 20.
+    /// These factors approximate this decline based on the Harris-Benedict equation adjustments
+    /// and general exercise physiology research showing reduced metabolic efficiency with age.
+    /// </summary>
     private static double GetAgeFactor(int age)
     {
         return age switch
         {
-            < 25 => 1.05,
-            < 35 => 1.0,
-            < 45 => 0.98,
-            < 55 => 0.95,
-            < 65 => 0.92,
-            _ => 0.88
+            < 25 => 1.05,  // Higher metabolic rate in young adults
+            < 35 => 1.0,   // Baseline metabolic rate
+            < 45 => 0.98,  // ~2% decrease
+            < 55 => 0.95,  // ~5% decrease
+            < 65 => 0.92,  // ~8% decrease
+            _ => 0.88      // ~12% decrease for 65+
         };
     }
 
