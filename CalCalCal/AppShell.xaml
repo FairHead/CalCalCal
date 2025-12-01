@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CalCalCal.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:CalCalCal.Views"
+    Shell.FlyoutBehavior="Flyout"
+    Title="CalCalCal">
+
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="150" BackgroundColor="#512BD4">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="🔥 CalCalCal"
+                       TextColor="White"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+                <Label Text="Track Your Fitness"
+                       TextColor="White"
+                       FontSize="14"
+                       HorizontalOptions="Center" />
+            </StackLayout>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Workouts" Icon="workout.png">
+        <ShellContent ContentTemplate="{DataTemplate views:WorkoutSessionsPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Profile" Icon="profile.png">
+        <ShellContent ContentTemplate="{DataTemplate views:UserProfilePage}" />
+    </FlyoutItem>
+
+</Shell>

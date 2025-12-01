@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:CalCalCal.ViewModels"
+             x:Class="CalCalCal.Views.UserProfilePage"
+             Title="Profile Settings">
+
+    <ContentPage.BindingContext>
+        <viewmodels:UserProfileViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <Grid Padding="20" RowSpacing="15" ColumnSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Title -->
+            <Label Grid.Row="0" Grid.ColumnSpan="2"
+                   Text="Your Profile"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,10" />
+
+            <!-- Name -->
+            <Label Grid.Row="1" Grid.Column="0"
+                   Text="Name:"
+                   VerticalOptions="Center" />
+            <Entry Grid.Row="1" Grid.Column="1"
+                   Text="{Binding Name}"
+                   Placeholder="Enter your name" />
+
+            <!-- Weight -->
+            <Label Grid.Row="2" Grid.Column="0"
+                   Text="Weight (kg):"
+                   VerticalOptions="Center" />
+            <Entry Grid.Row="2" Grid.Column="1"
+                   Text="{Binding Weight}"
+                   Keyboard="Numeric"
+                   Placeholder="Enter weight in kg" />
+
+            <!-- Height -->
+            <Label Grid.Row="3" Grid.Column="0"
+                   Text="Height (cm):"
+                   VerticalOptions="Center" />
+            <Entry Grid.Row="3" Grid.Column="1"
+                   Text="{Binding Height}"
+                   Keyboard="Numeric"
+                   Placeholder="Enter height in cm" />
+
+            <!-- Age -->
+            <Label Grid.Row="4" Grid.Column="0"
+                   Text="Age:"
+                   VerticalOptions="Center" />
+            <Entry Grid.Row="4" Grid.Column="1"
+                   Text="{Binding Age}"
+                   Keyboard="Numeric"
+                   Placeholder="Enter your age" />
+
+            <!-- Gender -->
+            <Label Grid.Row="5" Grid.Column="0"
+                   Text="Gender:"
+                   VerticalOptions="Center" />
+            <Picker Grid.Row="5" Grid.Column="1"
+                    SelectedItem="{Binding Gender}"
+                    ItemsSource="{x:Static Member=viewmodels:UserProfileViewModel.GenderOptions}" />
+
+            <!-- Status Message -->
+            <Label Grid.Row="6" Grid.ColumnSpan="2"
+                   Text="{Binding StatusMessage}"
+                   TextColor="Green"
+                   HorizontalOptions="Center" />
+
+            <!-- Save Button -->
+            <Button Grid.Row="7" Grid.ColumnSpan="2"
+                    Text="Save Profile"
+                    Command="{Binding SaveProfileCommand}"
+                    BackgroundColor="#512BD4"
+                    TextColor="White"
+                    Margin="0,20,0,0" />
+
+            <!-- Loading Indicator -->
+            <ActivityIndicator Grid.Row="0" Grid.RowSpan="8" Grid.ColumnSpan="2"
+                               IsRunning="{Binding IsLoading}"
+                               IsVisible="{Binding IsLoading}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

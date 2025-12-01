@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:CalCalCal.ViewModels"
+             xmlns:models="clr-namespace:CalCalCal.Models"
+             x:Class="CalCalCal.Views.WorkoutSessionsPage"
+             Title="Workout Sessions">
+
+    <Grid Padding="10" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Grid.Row="0" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0"
+                   Text="Your Workouts"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center" />
+
+            <Button Grid.Column="1"
+                    Text="+ New Workout"
+                    Command="{Binding CreateSessionCommand}"
+                    BackgroundColor="#512BD4"
+                    TextColor="White"
+                    CornerRadius="10" />
+        </Grid>
+
+        <!-- No Sessions Message -->
+        <StackLayout Grid.Row="1"
+                     IsVisible="{Binding HasNoSessions}"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center">
+            <Label Text="🏋️"
+                   FontSize="60"
+                   HorizontalOptions="Center" />
+            <Label Text="No workout sessions yet"
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,0" />
+            <Label Text="Tap 'New Workout' to start tracking!"
+                   FontSize="14"
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
+        </StackLayout>
+
+        <!-- Sessions List -->
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Sessions}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedSession}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:WorkoutSession">
+                    <Frame Margin="5" Padding="15" CornerRadius="10" BorderColor="#E0E0E0">
+                        <Grid RowSpacing="5" ColumnSpacing="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Session Name -->
+                            <Label Grid.Row="0" Grid.Column="0"
+                                   Text="{Binding Name}"
+                                   FontSize="18"
+                                   FontAttributes="Bold" />
+
+                            <!-- Completed Badge -->
+                            <Frame Grid.Row="0" Grid.Column="1"
+                                   IsVisible="{Binding IsCompleted}"
+                                   BackgroundColor="#4CAF50"
+                                   Padding="8,4"
+                                   CornerRadius="5">
+                                <Label Text="✓ Done" TextColor="White" FontSize="12" />
+                            </Frame>
+
+                            <!-- Session Date -->
+                            <Label Grid.Row="1" Grid.Column="0"
+                                   Text="{Binding SessionDate, StringFormat='{0:dddd, MMM d, yyyy}'}"
+                                   TextColor="Gray" />
+
+                            <!-- Session Stats -->
+                            <Grid Grid.Row="2" Grid.ColumnSpan="2" ColumnSpacing="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0"
+                                       Text="{Binding TotalDurationMinutes, StringFormat='⏱️ {0} min'}" />
+                                <Label Grid.Column="1"
+                                       Text="{Binding TotalCaloriesBurned, StringFormat='🔥 {0:F0} cal'}" />
+
+                                <ImageButton Grid.Column="3"
+                                             Source="delete.png"
+                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:WorkoutSessionViewModel}}, Path=DeleteSessionCommand}"
+                                             CommandParameter="{Binding .}"
+                                             WidthRequest="24"
+                                             HeightRequest="24"
+                                             BackgroundColor="Transparent" />
+                            </Grid>
+                        </Grid>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:WorkoutSessionViewModel}}, Path=NavigateToSessionCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Loading Indicator -->
+        <ActivityIndicator Grid.Row="1"
+                           IsRunning="{Binding IsLoading}"
+                           IsVisible="{Binding IsLoading}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+    </Grid>
+</ContentPage>
