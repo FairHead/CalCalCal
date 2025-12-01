@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:CalCalCal.ViewModels"
+             xmlns:models="clr-namespace:CalCalCal.Models"
+             x:Class="CalCalCal.Views.ExerciseCardsPage"
+             Title="Exercise Cards">
+
+    <Grid Padding="10" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Session Summary -->
+        <Frame Grid.Row="0" Padding="15" BackgroundColor="#512BD4" CornerRadius="10">
+            <Grid ColumnSpacing="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0" HorizontalOptions="Center">
+                    <Label Text="Total Duration"
+                           TextColor="White"
+                           FontSize="12"
+                           HorizontalOptions="Center" />
+                    <Label Text="{Binding TotalSessionDuration, StringFormat='{0} min'}"
+                           TextColor="White"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" HorizontalOptions="Center">
+                    <Label Text="Calories Burned"
+                           TextColor="White"
+                           FontSize="12"
+                           HorizontalOptions="Center" />
+                    <Label Text="{Binding TotalSessionCalories, StringFormat='{0:F0} cal'}"
+                           TextColor="White"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+                </StackLayout>
+            </Grid>
+        </Frame>
+
+        <!-- Add/Edit Exercise Form -->
+        <Frame Grid.Row="1" Padding="15" CornerRadius="10" BorderColor="#E0E0E0">
+            <Grid RowSpacing="10" ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Form Title -->
+                <StackLayout Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <Label Text="Add New Exercise"
+                           IsVisible="{Binding IsEditing, Converter={StaticResource InverseBoolConverter}}"
+                           FontSize="16"
+                           FontAttributes="Bold" />
+                    <Label Text="Edit Exercise"
+                           IsVisible="{Binding IsEditing}"
+                           FontSize="16"
+                           FontAttributes="Bold" />
+                </StackLayout>
+
+                <!-- Exercise Type -->
+                <StackLayout Grid.Row="1" Grid.Column="0">
+                    <Label Text="Exercise Type" FontSize="12" TextColor="Gray" />
+                    <Picker ItemsSource="{Binding ExerciseTypes}"
+                            SelectedItem="{Binding ExerciseType}" />
+                </StackLayout>
+
+                <!-- Intensity -->
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <Label Text="Intensity" FontSize="12" TextColor="Gray" />
+                    <Picker ItemsSource="{Binding IntensityLevels}"
+                            SelectedItem="{Binding Intensity}" />
+                </StackLayout>
+
+                <!-- Duration -->
+                <StackLayout Grid.Row="2" Grid.Column="0">
+                    <Label Text="Duration (minutes)" FontSize="12" TextColor="Gray" />
+                    <Entry Text="{Binding DurationMinutes}"
+                           Keyboard="Numeric" />
+                </StackLayout>
+
+                <!-- Estimated Calories -->
+                <StackLayout Grid.Row="2" Grid.Column="1" VerticalOptions="End">
+                    <Label Text="Estimated Calories" FontSize="12" TextColor="Gray" />
+                    <Label Text="{Binding EstimatedCalories, StringFormat='{0:F0} cal'}"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#FF5722" />
+                </StackLayout>
+
+                <!-- Notes -->
+                <StackLayout Grid.Row="3" Grid.ColumnSpan="2">
+                    <Label Text="Notes (optional)" FontSize="12" TextColor="Gray" />
+                    <Entry Text="{Binding Notes}"
+                           Placeholder="Add any notes about this exercise" />
+                </StackLayout>
+
+                <!-- Action Buttons -->
+                <Grid Grid.Row="4" Grid.ColumnSpan="2" ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0"
+                            Text="Cancel"
+                            Command="{Binding CancelEditCommand}"
+                            IsVisible="{Binding IsEditing}"
+                            BackgroundColor="#9E9E9E"
+                            TextColor="White" />
+
+                    <!-- Add Button (shown when not editing) -->
+                    <Button Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Text="Add Exercise"
+                            Command="{Binding AddCardCommand}"
+                            IsVisible="{Binding IsEditing, Converter={StaticResource InverseBoolConverter}}"
+                            BackgroundColor="#512BD4"
+                            TextColor="White" />
+
+                    <!-- Save Button (shown when editing) -->
+                    <Button Grid.Column="1"
+                            Text="Save Changes"
+                            Command="{Binding SaveEditCommand}"
+                            IsVisible="{Binding IsEditing}"
+                            BackgroundColor="#512BD4"
+                            TextColor="White" />
+                </Grid>
+            </Grid>
+        </Frame>
+
+        <!-- No Cards Message -->
+        <StackLayout Grid.Row="2"
+                     IsVisible="{Binding HasNoCards}"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center">
+            <Label Text="💪"
+                   FontSize="60"
+                   HorizontalOptions="Center" />
+            <Label Text="No exercises added yet"
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,0" />
+            <Label Text="Use the form above to add your first exercise!"
+                   FontSize="14"
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
+        </StackLayout>
+
+        <!-- Exercise Cards Grid -->
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding ExerciseCards}"
+                        IsVisible="{Binding HasNoCards, Converter={StaticResource InverseBoolConverter}}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2"
+                                 VerticalItemSpacing="10"
+                                 HorizontalItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:ExerciseCard">
+                    <Frame Padding="12" CornerRadius="10" BorderColor="#E0E0E0" HeightRequest="160">
+                        <Grid RowSpacing="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <!-- Exercise Type -->
+                            <Label Grid.Row="0"
+                                   Text="{Binding ExerciseType}"
+                                   FontSize="16"
+                                   FontAttributes="Bold" />
+
+                            <!-- Intensity Badge -->
+                            <Frame Grid.Row="1"
+                                   Padding="6,2"
+                                   CornerRadius="5"
+                                   BackgroundColor="#E3F2FD"
+                                   HorizontalOptions="Start">
+                                <Label Text="{Binding Intensity}"
+                                       FontSize="12"
+                                       TextColor="#1976D2" />
+                            </Frame>
+
+                            <!-- Duration and Calories -->
+                            <Grid Grid.Row="2" ColumnSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0"
+                                       Text="{Binding DurationMinutes, StringFormat='⏱️ {0} min'}"
+                                       FontSize="13" />
+                                <Label Grid.Column="1"
+                                       Text="{Binding CaloriesBurned, StringFormat='🔥 {0:F0} cal'}"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       TextColor="#FF5722" />
+                            </Grid>
+
+                            <!-- Notes -->
+                            <Label Grid.Row="3"
+                                   Text="{Binding Notes}"
+                                   FontSize="11"
+                                   TextColor="Gray"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="2" />
+
+                            <!-- Action Buttons -->
+                            <Grid Grid.Row="4" ColumnSpacing="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0"
+                                        Text="Edit"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ExerciseCardViewModel}}, Path=StartEditCommand}"
+                                        CommandParameter="{Binding .}"
+                                        FontSize="12"
+                                        Padding="5"
+                                        BackgroundColor="#2196F3"
+                                        TextColor="White" />
+
+                                <Button Grid.Column="1"
+                                        Text="Delete"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ExerciseCardViewModel}}, Path=DeleteCardCommand}"
+                                        CommandParameter="{Binding .}"
+                                        FontSize="12"
+                                        Padding="5"
+                                        BackgroundColor="#F44336"
+                                        TextColor="White" />
+                            </Grid>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Loading Indicator -->
+        <ActivityIndicator Grid.Row="2"
+                           IsRunning="{Binding IsLoading}"
+                           IsVisible="{Binding IsLoading}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+    </Grid>
+</ContentPage>
