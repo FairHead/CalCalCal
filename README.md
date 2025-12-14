@@ -7,6 +7,7 @@ StackFit is a cross-platform mobile fitness app built with .NET MAUI. Workouts a
 - Feature list: `frontend/docs/FEATURES.md`
 - Calorie & duration formulas: `frontend/docs/KALORIEN-BERECHNUNG.md`
 - Roadmap: `frontend/docs/ROADMAP.md`
+- Implementation checklist: `Task.md`
 - Data model (shared): `backend/docs/DATENMODELL.md`
 
 ## Repo Structure
