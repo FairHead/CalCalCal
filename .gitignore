@@ -1,3 +1,19 @@
 # JetBrains IDEs
 .idea/
 *.iml
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+
+# .NET build artifacts
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+
+# OS files
+.DS_Store
+Thumbs.db
