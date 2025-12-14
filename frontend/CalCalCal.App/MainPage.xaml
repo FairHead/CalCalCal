@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalCalCal.App.MainPage"
+             BackgroundColor="{StaticResource BackgroundDark}">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="0">
+        
+        <!-- Header -->
+        <Label Grid.Row="0" 
+               Text="My Workout"
+               Style="{StaticResource TitleLarge}"
+               Margin="20,60,20,20"/>
+
+        <!-- Session Card -->
+        <ScrollView Grid.Row="1">
+            <Frame Margin="20" 
+                   Padding="20"
+                   BackgroundColor="{StaticResource CardBackground}"
+                   CornerRadius="24"
+                   HasShadow="True">
+                
+                <VerticalStackLayout Spacing="20">
+                    
+                    <!-- Session Header -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label x:Name="SessionTitle"
+                               Text="Back Day"
+                               Style="{StaticResource TitleMedium}"/>
+                        <Label x:Name="SessionMeta"
+                               Text="4 exercises • ~45 min"
+                               Style="{StaticResource BodySmall}"/>
+                    </VerticalStackLayout>
+
+                    <!-- Exercise Grid (2 columns) -->
+                    <Grid x:Name="ExerciseGrid" 
+                          ColumnDefinitions="*,*"
+                          RowDefinitions="Auto,Auto"
+                          ColumnSpacing="12"
+                          RowSpacing="12">
+                        <!-- Exercises will be added dynamically -->
+                    </Grid>
+
+                    <!-- Divider -->
+                    <BoxView HeightRequest="1" 
+                             BackgroundColor="{StaticResource TextSecondary}"
+                             Opacity="0.3"
+                             Margin="0,10"/>
+
+                    <!-- Total Calories Footer -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Total Calories"
+                               Style="{StaticResource BodySmall}"/>
+                        <Label x:Name="TotalCalories"
+                               Text="340 kcal"
+                               FontSize="32"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}"/>
+                        <Label Text="based on profile data (age • height • weight)"
+                               Style="{StaticResource BodySmall}"
+                               FontSize="10"/>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+        </ScrollView>
+
+        <!-- Floating Action Button -->
+        <Frame Grid.Row="1"
+               WidthRequest="56"
+               HeightRequest="56"
+               CornerRadius="28"
+               BackgroundColor="{StaticResource AccentBlue}"
+               Padding="0"
+               HasShadow="True"
+               HorizontalOptions="End"
+               VerticalOptions="End"
+               Margin="0,0,20,20">
+            <Label Text="+"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Frame>
+
+    </Grid>
+
+</ContentPage>

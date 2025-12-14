@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Dark Mode Colors -->
+    <Color x:Key="BackgroundDark">#0B0B0F</Color>
+    <Color x:Key="CardBackground">#1A1A24</Color>
+    <Color x:Key="TextPrimary">#F5F5F5</Color>
+    <Color x:Key="TextSecondary">#8A8A9A</Color>
+    
+    <!-- Neon Accents -->
+    <Color x:Key="AccentBlue">#00D9FF</Color>
+    <Color x:Key="AccentOrange">#FF6B35</Color>
+    <Color x:Key="AccentYellow">#FFD23F</Color>
+    
+    <!-- Semantic Colors -->
+    <Color x:Key="IntensityColor">#00D9FF</Color>
+    <Color x:Key="CaloriesColor">#FF6B35</Color>
+
+    <!-- Typography -->
+    <Style x:Key="TitleLarge" TargetType="Label">
+        <Setter Property="FontSize" Value="32"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}"/>
+    </Style>
+
+    <Style x:Key="TitleMedium" TargetType="Label">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}"/>
+    </Style>
+
+    <Style x:Key="BodySmall" TargetType="Label">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="TextColor" Value="{StaticResource TextSecondary}"/>
+    </Style>
+
+    <Style x:Key="CaloriesText" TargetType="Label">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="{StaticResource CaloriesColor}"/>
+    </Style>
+
+</ResourceDictionary>
