@@ -1,24 +1,24 @@
 # Kalorien- & Dauerberechnung (StackFit / CalCalCal)
 
 ## Ziele
-- Live‑Feedback beim Konfigurieren von Übungen
+- Live-Feedback beim Konfigurieren von Übungen
 - Einfache, erklärbare Näherung (MVP)
 - Testbar (deterministisch, ohne UI-Abhängigkeiten)
 
-## Grundumsatz (Mifflin‑St. Jeor)
+## Grundumsatz (Mifflin-St. Jeor)
 Männer:
 `BMR = 10 * weightKg + 6.25 * heightCm - 5 * age + 5`
 
 Frauen:
 `BMR = 10 * weightKg + 6.25 * heightCm - 5 * age - 161`
 
-Hinweis: Im MVP ist der BMR optional (z. B. für spätere Tages-/Zielwerte). Für Workout‑Kalorien reicht Gewicht + MET.
+Hinweis: Im MVP ist der BMR optional (z. B. für spätere Tages-/Zielwerte). Für Workout-Kalorien reicht Gewicht + MET.
 
-## Workout‑Kalorien (MET)
+## Workout-Kalorien (MET)
 Formel:
 `kcal = MET * weightKg * durationHours`
 
-MET‑Mapping (MVP):
+MET-Mapping (MVP):
 | Intensität | MET |
 |---|---:|
 | low | 3 |
@@ -35,7 +35,7 @@ Näherung (wie im Konzept):
 Alternative (realistischer, Pausen nur zwischen Sätzen):
 `durationSec = sets * reps * workSecondsPerRep + max(0, sets - 1) * restTimeSec`
 
-## Beispiel (Push‑Ups)
+## Beispiel (Push-Ups)
 Input:
 - Gewicht: 76 kg
 - Intensität: medium (MET 6)

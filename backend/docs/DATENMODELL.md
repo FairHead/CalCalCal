@@ -1,5 +1,7 @@
 # Datenmodell (StackFit / CalCalCal)
 
+> Hinweis: Dieses Datenmodell ist **shared**: es wird vom Frontend (lokale Speicherung) und später vom Backend (Sync/API) genutzt.
+
 ## Überblick
 Die App speichert lokal:
 - **UserProfile** (genau 1)
@@ -67,7 +69,7 @@ Hinweis: `totalCalories` und `estimatedDuration` sind abgeleitet und werden beim
 }
 ```
 
-## SQLite‑Schema (MVP Vorschlag)
+## SQLite-Schema (MVP Vorschlag)
 ### user_profile
 - `id` (TEXT, PK, constant e.g. `profile`)
 - `age` (INTEGER)

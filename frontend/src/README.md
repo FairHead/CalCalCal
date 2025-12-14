@@ -1,6 +1,6 @@
-# src/
+# frontend/src/
 
-Geplante Code‑Struktur (MAUI, MVVM, Clean Architecture):
+Geplante Code-Struktur (MAUI, MVVM, Clean Architecture):
 - `Core/` — Entities + Interfaces
 - `Models/` — Datenstrukturen/DTOs
 - `Services/` — Calorie/Timer/Profile/Session Services

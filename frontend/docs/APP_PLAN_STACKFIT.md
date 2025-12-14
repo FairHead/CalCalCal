@@ -1,4 +1,4 @@
-# StackFit – Projektplan (Repo: CalCalCal)
+# StackFit - Projektplan (Repo: CalCalCal)
 
 Projektname: **StackFit**  
 Alternativer/Repo-Name: **CalCalCal**
@@ -86,75 +86,24 @@ StackFit ist eine mobile Fitness-App, die Workouts visuell und logisch in **Sess
 | SettingsPanel | Profil & Farbanpassung |
 
 ## Datenmodell (Entities)
-### UserProfile
-```json
-{
-  "age": 27,
-  "weight": 76,
-  "height": 178,
-  "gender": "male",
-  "activityLevel": "medium"
-}
-```
-
-### Session
-```json
-{
-  "id": "uuid",
-  "title": "Push Day",
-  "createdAt": "timestamp",
-  "exercises": ["Exercise"],
-  "totalCalories": 420,
-  "estimatedDuration": 47
-}
-```
-
-### Exercise
-```json
-{
-  "id": "uuid",
-  "name": "Push-Ups",
-  "intensity": "high",
-  "repetitions": 12,
-  "sets": 4,
-  "restTimeSec": 60,
-  "caloriesBurned": 52
-}
-```
+Siehe: `../../backend/docs/DATENMODELL.md`
 
 ## Kalorien-Berechnungsmodul
-### Formel: Mifflin-St. Jeor (Grundumsatz)
-- Männer: `10 * Gewicht + 6.25 * Größe – 5 * Alter + 5`
-- Frauen: `10 * Gewicht + 6.25 * Größe – 5 * Alter – 161`
-
-### Übungs-Kalorienverbrauch (MET)
-`Kalorien = MET * Gewicht(kg) * Dauer(h)`
-
-| Intensität | MET-Wert |
-|---|---:|
-| low | 3 |
-| medium | 6 |
-| high | 8 |
-
-Dauer (h) (Näherung):
-`((Sätze × (Reps × 2s + Pause)) / 60) / 60`
-
-Beispiel: Push-Ups, 4 Sätze, 12 Wiederholungen, 60s Pause  
-→ ~40 kcal bei mittlerer Intensität, 76 kg
+Siehe: `KALORIEN-BERECHNUNG.md`
 
 ## App-Architektur
 ### Muster
 - MVVM
-- Clean Architecture (klar getrennte Verantwortlichkeiten)
+- Clean Architecture
 - Modularer Aufbau
 
 ### Projekt-Module (Zielbild)
-- `Core/`: Entities, Interfaces
-- `Models/`: Datenstrukturen (DTOs/Records)
-- `ViewModels/`: Bindings pro View
-- `UI/`: Views + Komponenten
-- `Services/`: `CalorieService`, `TimerService`, `ProfileService`
-- `Storage/`: SQLite oder Preferences
+- `frontend/src/Core/`: Entities, Interfaces
+- `frontend/src/Models/`: Datenstrukturen (DTOs/Records)
+- `frontend/src/ViewModels/`: Bindings pro View
+- `frontend/src/UI/`: Views + Komponenten
+- `frontend/src/Services/`: `CalorieService`, `TimerService`, `ProfileService`
+- `frontend/src/Storage/`: SQLite oder Preferences
 
 ## API / Sync
 - MVP: **Offline First**
@@ -176,20 +125,7 @@ Beispiel: Push-Ups, 4 Sätze, 12 Wiederholungen, 60s Pause
 - Touch-first Bedienung
 
 ## MVP & Roadmap
-### MVP (v1.0)
-- Nutzerprofil
-- Session Stack mit 3D Cards
-- Übungen als Cards mit Live-Daten
-- Kalorienberechnung
-- Timer / Pause
-- Speicher lokal
-
-### v1.1+
-- Cloud Sync
-- Wearable Integration
-- Trainingsdaten exportieren
-- Barcode Scanner
-- Social Sharing
+Siehe: `ROADMAP.md`
 
 ## Risiken & Entscheidungen
 | Risiko | Entscheidung / Lösung |
@@ -206,37 +142,51 @@ Beispiel: Push-Ups, 4 Sätze, 12 Wiederholungen, 60s Pause
 - CI/CD mit GitHub Actions (Android & iOS Build Pipelines)
 
 ## Dateien im Repo
-Empfohlene zentrale Dokumentation:
-- `README.md` — Einstieg & Überblick
-- `ARCHITEKTUR.md` — technisches Setup
+- Repo Einstieg: `../../README.md`
+- Frontend Einstieg: `../README.md`
+- Backend Einstieg: `../../backend/README.md`
+
+Frontend Doku:
+- `APP_PLAN_STACKFIT.md` — zentrale Projektdokumentation
+- `ARCHITEKTUR.md` — Architektur (MVVM + Clean Architecture)
 - `FEATURES.md` — Featureliste & Status
-- `DATENMODELL.md` — JSON-Modelle
 - `KALORIEN-BERECHNUNG.md` — Rechenlogik
 - `ROADMAP.md` — Zeitplan & Phasen
-- `APP_PLAN_STACKFIT.md` — zentrale Gesamtdoku (dieses Dokument)
+- `ui-design/README.md` — UI Design Notes
+
+Backend Doku:
+- `../../backend/docs/DATENMODELL.md` — Entities + Storage/Sync Schema
 
 ## Projektstruktur
-Geplante Struktur (VS Code + Copilot freundlich):
-```
+Geplante Struktur:
+```text
 CalCalCal/
-├── README.md
-├── ARCHITEKTUR.md
-├── FEATURES.md
-├── DATENMODELL.md
-├── KALORIEN-BERECHNUNG.md
-├── ROADMAP.md
-├── APP_PLAN_STACKFIT.md
-├── .gitignore
-├── .editorconfig
-├── src/
-│   ├── Core/
-│   ├── Services/
-│   ├── Models/
-│   ├── ViewModels/
-│   ├── UI/
-│   └── Storage/
-├── assets/
-│   └── wireframes/
-└── docs/
-    └── ui-design/
+  README.md
+  .gitignore
+  .editorconfig
+  frontend/
+    README.md
+    docs/
+      APP_PLAN_STACKFIT.md
+      ARCHITEKTUR.md
+      FEATURES.md
+      KALORIEN-BERECHNUNG.md
+      ROADMAP.md
+      ui-design/
+        README.md
+    assets/
+      wireframes/
+        README.md
+    src/
+      README.md
+      Core/README.md
+      Models/README.md
+      Services/README.md
+      Storage/README.md
+      ViewModels/README.md
+      UI/README.md
+  backend/
+    README.md
+    docs/
+      DATENMODELL.md
 ```
