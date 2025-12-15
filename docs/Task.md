@@ -1,11 +1,12 @@
-# Task Roadmap / Checklist – StackFit (CalCalCal)
+# Task Roadmap / Checklist – CalCalCal
 
-Diese Datei ist die **umsetzbare Schritt-für-Schritt Checkliste** für StackFit – von “leere MAUI App” bis “fertige MVP App”.
+Diese Datei ist die **umsetzbare Schritt-für-Schritt Checkliste** für CalCalCal – von "leere MAUI App" bis "fertige MVP App".
 
 Ziel: **Offline-first** Fitness-App mit **Session Cards** (3D Stack), Live-**Kalorien** + **Dauer** Berechnung, **Timer/Pausen**, Dark Mode + Neon-Akzenten.
 
 Referenz-Doku:
-- Produktplan: `frontend/docs/APP_PLAN_STACKFIT.md`
+- Canonical Spec: `specs/stackfit/spec.md`
+- Produktplan: `frontend/docs/APP_PLAN_CALCALCAL.md`
 - Architektur: `frontend/docs/ARCHITEKTUR.md`
 - Features: `frontend/docs/FEATURES.md`
 - Kalorienformeln: `frontend/docs/KALORIEN-BERECHNUNG.md`
@@ -43,30 +44,28 @@ Referenz-Doku:
 - [ ] `.gitignore` ignoriert IDE/Build Artefakte (bin/obj/.vs/.idea).
 
 ### 1.2 Neues MAUI Projekt erzeugen (noch ohne Features)
-Ziel: “Hello World” App läuft lokal, Clean Start.
+Ziel: "Hello World" App läuft lokal, Clean Start.
 
 - [ ] Im Ordner `frontend/` eine Solution erstellen (Variante A: minimal 1 Projekt).
-  - [ ] `dotnet new maui` erstellen (z. B. `frontend/src/StackFit.App/`)
-  - [ ] Optional: `frontend/StackFit.sln` anlegen und App Projekt hinzufügen
+  - [ ] `dotnet new maui` erstellen (z. B. `frontend/CalCalCal.App/`)
+  - [ ] Optional: `CalCalCal.sln` anlegen und App Projekt hinzufügen
 - [ ] (Empfohlen) Zusätzlich eine testbare Core Library (Variante B: Clean/Modular):
-  - [ ] `frontend/src/StackFit.Core/` als `dotnet new classlib`
-  - [ ] `frontend/tests/StackFit.Core.Tests/` als `dotnet new xunit`
-  - [ ] Projekt-Referenzen setzen: App → Core, Tests → Core
+  - [ ] `frontend/CalCalCal.App/Core/` als Teil des MAUI-Projekts
+  - [ ] `backend/CalCalCal.Tests/` als `dotnet new xunit`
+  - [ ] Projekt-Referenzen setzen: Tests → App
 
 Akzeptanzkriterien:
 - [ ] App baut lokal (Windows + Android Build zumindest).
 - [ ] Tests laufen lokal (Core Tests).
 - [ ] Repo bleibt sauber (keine bin/obj committed).
 
-### 1.3 “Platzhalter-Struktur” zu echter Struktur migrieren
-Aktuell gibt es Platzhalter: `frontend/src/Core`, `Models`, `Services`, `Storage`, `UI`, `ViewModels`.
+### 1.3 "Platzhalter-Struktur" zu echter Struktur migrieren
+Aktuell gibt es Ordner: `frontend/CalCalCal.App/Core`, `Models`, `Services`, `Storage`, `ViewModels`.
 
 Entscheidung treffen:
-- [ ] **Option 1 (ein Projekt)**: Platzhalter-Ordner werden zu Unterordnern im MAUI Projekt.
-- [ ] **Option 2 (mehrere Projekte, empfohlen)**: Platzhalter-Ordner entfallen; Struktur liegt in Projekten:
-  - `StackFit.Core` enthält Entities/Enums/Calculations
-  - `StackFit.App` enthält UI/ViewModels
-  - Storage als eigenes Projekt oder im App-Projekt unter `Storage/`
+- [ ] **Option 1 (ein Projekt, EMPFOHLEN)**: Alle Ordner sind Unterordner im MAUI Projekt `CalCalCal.App`.
+  - Namespaces: `CalCalCal.App.Core`, `CalCalCal.App.Models`, `CalCalCal.App.Services`, etc.
+- [ ] **Option 2 (mehrere Projekte)**: Separate Class Libraries für Core/Models.
 
 Aktion:
 - [ ] Gewählte Option in `frontend/docs/ARCHITEKTUR.md` kurz festhalten.

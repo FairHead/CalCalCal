@@ -14,7 +14,10 @@
 - SessionCard: Titel, Totals (kcal/min), Exercise Grid (2 Spalten)
 - ExerciseCard: Name, Slider, Reps/Sets/Pause + Icon/Bild
 - Footer: Summen + schneller Link zu Settings
-# UI Task List – StackFit / CalCalCal
+
+---
+
+# UI Task List – CalCalCal
 
 ## UI Design – Verbindliche Vorgaben
 

@@ -1,17 +1,88 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11222.15 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{1AE8ACA6-933B-BF2A-3671-3E2EAC007D16}"
+	ProjectSection(SolutionItems) = preProject
+		backend\README.md = backend\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalCalCal.Backend", "backend\CalCalCal.Backend\CalCalCal.Backend.csproj", "{2DC65086-5B60-431B-9106-2F7BF0554700}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalCalCal.Tests", "backend\CalCalCal.Tests\CalCalCal.Tests.csproj", "{72D164FC-AE9C-414E-9BE2-39F168CFC3B5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontend", "frontend", "{CE609670-85B9-0D16-FB54-ED063D5D8A6D}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\README.md = frontend\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalCalCal.App", "frontend\CalCalCal.App\CalCalCal.App.csproj", "{B0435AF3-CABB-42DC-92B5-D84D03699E71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0DB7D4DD-3A28-43C0-B485-85C4CC6CF016}"
+	ProjectSection(SolutionItems) = preProject
+		ARCHITECTURE.md = ARCHITECTURE.md
+		CHANGELOG.md = CHANGELOG.md
+		PROJEKTSTRUKTUR.md = PROJEKTSTRUKTUR.md
+		README.md = README.md
+		START_HERE.md = START_HERE.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{3899051A-978A-4FEC-9E5E-60D646614F7E}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Task.md = docs\Task.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "specs", "specs", "{BB520451-A29A-411E-9CF7-4967340581B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "stackfit", "stackfit", "{1039112A-646D-4DB4-8C85-D57D93D9A7B9}"
+	ProjectSection(SolutionItems) = preProject
+		specs\stackfit\spec.md = specs\stackfit\spec.md
+		specs\stackfit\SPEC_KIT_WORKFLOW.md = specs\stackfit\SPEC_KIT_WORKFLOW.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{BFA0DAD3-294E-4DD9-846E-8ED76FAD39F1}"
+	ProjectSection(SolutionItems) = preProject
+		.github\copilot.md = .github\copilot.md
+		.github\pull_request_template.md = .github\pull_request_template.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ISSUE_TEMPLATE", "ISSUE_TEMPLATE", "{F5EFD703-F2BF-4733-8D91-0D2C24FCF7D4}"
+	ProjectSection(SolutionItems) = preProject
+		.github\ISSUE_TEMPLATE\bug_report.md = .github\ISSUE_TEMPLATE\bug_report.md
+		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{B538FE2E-E44F-4367-83F9-DF212561E5D5}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\ci.yml = .github\workflows\ci.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{D94991BE-156A-438F-8EFC-20C62FFAF2EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wireframes", "wireframes", "{AC241CF7-9698-4969-8D4A-9515C449ACD3}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\assets\wireframes\README.md = frontend\assets\wireframes\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{A58DBD4A-DD07-4E15-8B06-29508C97A1DE}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\docs\APP_PLAN_CALCALCAL.md = frontend\docs\APP_PLAN_CALCALCAL.md
+		frontend\docs\ARCHITEKTUR.md = frontend\docs\ARCHITEKTUR.md
+		frontend\docs\FEATURES.md = frontend\docs\FEATURES.md
+		frontend\docs\KALORIEN-BERECHNUNG.md = frontend\docs\KALORIEN-BERECHNUNG.md
+		frontend\docs\ROADMAP.md = frontend\docs\ROADMAP.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ui-design", "ui-design", "{5CFB98F2-0E5D-41C9-9481-F6806720D05E}"
+	ProjectSection(SolutionItems) = preProject
+		frontend\docs\ui-design\README.md = frontend\docs\ui-design\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{99F6DD27-6E15-487F-8B76-42DD3B1C61D8}"
+	ProjectSection(SolutionItems) = preProject
+		backend\docs\DATENMODELL.md = backend\docs\DATENMODELL.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +120,7 @@ Global
 		{72D164FC-AE9C-414E-9BE2-39F168CFC3B5}.Release|x86.Build.0 = Release|Any CPU
 		{B0435AF3-CABB-42DC-92B5-D84D03699E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B0435AF3-CABB-42DC-92B5-D84D03699E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0435AF3-CABB-42DC-92B5-D84D03699E71}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{B0435AF3-CABB-42DC-92B5-D84D03699E71}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{B0435AF3-CABB-42DC-92B5-D84D03699E71}.Debug|x64.Build.0 = Debug|Any CPU
 		{B0435AF3-CABB-42DC-92B5-D84D03699E71}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -67,5 +139,16 @@ Global
 		{2DC65086-5B60-431B-9106-2F7BF0554700} = {1AE8ACA6-933B-BF2A-3671-3E2EAC007D16}
 		{72D164FC-AE9C-414E-9BE2-39F168CFC3B5} = {1AE8ACA6-933B-BF2A-3671-3E2EAC007D16}
 		{B0435AF3-CABB-42DC-92B5-D84D03699E71} = {CE609670-85B9-0D16-FB54-ED063D5D8A6D}
+		{1039112A-646D-4DB4-8C85-D57D93D9A7B9} = {BB520451-A29A-411E-9CF7-4967340581B4}
+		{F5EFD703-F2BF-4733-8D91-0D2C24FCF7D4} = {BFA0DAD3-294E-4DD9-846E-8ED76FAD39F1}
+		{B538FE2E-E44F-4367-83F9-DF212561E5D5} = {BFA0DAD3-294E-4DD9-846E-8ED76FAD39F1}
+		{D94991BE-156A-438F-8EFC-20C62FFAF2EF} = {CE609670-85B9-0D16-FB54-ED063D5D8A6D}
+		{AC241CF7-9698-4969-8D4A-9515C449ACD3} = {D94991BE-156A-438F-8EFC-20C62FFAF2EF}
+		{A58DBD4A-DD07-4E15-8B06-29508C97A1DE} = {CE609670-85B9-0D16-FB54-ED063D5D8A6D}
+		{5CFB98F2-0E5D-41C9-9481-F6806720D05E} = {A58DBD4A-DD07-4E15-8B06-29508C97A1DE}
+		{99F6DD27-6E15-487F-8B76-42DD3B1C61D8} = {1AE8ACA6-933B-BF2A-3671-3E2EAC007D16}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B0C9EB8-AA2C-4C67-A7EF-42157C12F3DB}
 	EndGlobalSection
 EndGlobal

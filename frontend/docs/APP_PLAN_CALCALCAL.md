@@ -97,12 +97,12 @@ Siehe: `KALORIEN-BERECHNUNG.md`
 - Modularer Aufbau
 
 ### Projekt-Module (Zielbild)
-- `frontend/src/Core/`: Entities, Interfaces
-- `frontend/src/Models/`: Datenstrukturen (DTOs/Records)
-- `frontend/src/ViewModels/`: Bindings pro View
-- `frontend/src/UI/`: Views + Komponenten
-- `frontend/src/Services/`: `CalorieService`, `TimerService`, `ProfileService`
-- `frontend/src/Storage/`: SQLite oder Preferences
+- `frontend/CalCalCal.App/Core/`: Entities, Interfaces, Enums
+- `frontend/CalCalCal.App/Models/`: Datenstrukturen (Domain Models)
+- `frontend/CalCalCal.App/ViewModels/`: Bindings pro View
+- `frontend/CalCalCal.App/Views/`: Views + Komponenten
+- `frontend/CalCalCal.App/Services/`: `CalorieService`, `TimerService`, `ProfileService`
+- `frontend/CalCalCal.App/Storage/`: SQLite oder Preferences
 
 ## API / Sync
 - MVP: **Offline First**
@@ -166,7 +166,15 @@ CalCalCal/
   ARCHITECTURE.md
   START_HERE.md
   frontend/
-    CalCalCal.App/      # MAUI App
+    CalCalCal.App/          # MAUI App (alles Frontend hier!)
+      Core/                 # Interfaces, Enums, Helpers
+      Models/               # Domain Models
+      ViewModels/           # MVVM ViewModels
+      Views/                # Pages & UI
+      Services/             # Business Logic
+      Storage/              # SQLite Datenzugriff
+      Resources/            # Images, Fonts, Styles
+      Platforms/            # Platform-specific Code
     docs/
       APP_PLAN_CALCALCAL.md
       ARCHITEKTUR.md
@@ -177,12 +185,10 @@ CalCalCal/
     assets/
       wireframes/
   backend/
-    CalCalCal.Services/ # Business Logic
-    CalCalCal.Storage/  # Datenzugriff
+    CalCalCal.Backend/      # Für später (Cloud-Sync)
+    CalCalCal.Tests/        # Unit Tests (xUnit)
     docs/
       DATENMODELL.md
-  shared/
-    CalCalCal.Core/     # Kernfunktionalität
-    CalCalCal.Models/   # Domain Models
-    CalCalCal.Tests/    # Tests
-```
+  specs/
+    stackfit/
+      spec.md               # Canonical Spec

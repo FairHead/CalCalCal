@@ -1,4 +1,4 @@
-# Features (StackFit / CalCalCal)
+# Features (CalCalCal)
 
 ## MVP (v1.0)
 - [ ] Nutzerprofil (Alter, Gewicht, Größe, Geschlecht)

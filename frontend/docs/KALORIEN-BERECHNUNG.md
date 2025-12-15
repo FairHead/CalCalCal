@@ -1,4 +1,4 @@
-# Kalorien- & Dauerberechnung (StackFit / CalCalCal)
+# Kalorien- & Dauerberechnung (CalCalCal)
 
 ## Ziele
 - Live-Feedback beim Konfigurieren von Übungen

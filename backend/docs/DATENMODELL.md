@@ -1,4 +1,4 @@
-# Datenmodell (StackFit / CalCalCal)
+# Datenmodell (CalCalCal)
 
 > Hinweis: Dieses Datenmodell ist **shared**: es wird vom Frontend (lokale Speicherung) und später vom Backend (Sync/API) genutzt.
 

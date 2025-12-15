@@ -1,4 +1,4 @@
-# Roadmap (StackFit / CalCalCal)
+# Roadmap (CalCalCal)
 
 ## MVP (v1.0)
 Ziel: Offline-First Session-Stack mit Live-Berechnung.
